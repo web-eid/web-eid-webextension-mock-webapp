@@ -1,0 +1,37 @@
+<script src="/index.js"></script>
+
+<style>
+  .choice a {
+    display: inline-block;
+    line-height: 3em;
+    width: 6em;
+    border: 1px solid gray;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 3px;
+  }
+</style>
+
+<h1>Web eID service mock</h1>
+<div>
+  <h2>TokenSigning page script</h2>
+  <input type="checkbox" id="tokenSigning" class="toggle-option">
+  <label for="tokenSigning">
+    Use TokenSigning page script
+  </label>
+
+  <p>
+    Enabling the <strong>TokenSigning page script</strong> option will include
+    the following code to the <strong>&lt;head&gt;</strong> section of the page.
+    <pre>&lt;script src="/token-signing.js" data-name="TokenSigning"&gt;&lt;/script&gt;</pre>
+    This option can be used to test the chrome-token-signing issue
+    <a href="https://github.com/open-eid/chrome-token-signing/issues/158">Plugin causes CSP (Content Security Policy) violations, cannot use CSP block and ID-card signing functionality at the
+    same time #158</a>
+  </p>
+</div>
+<div class="choice">
+  <h2>Library</h2>
+  <a href="webeid">Web-eID</a>
+  <a href="hwcrypto">hwcrypto.js</a>
+</div>

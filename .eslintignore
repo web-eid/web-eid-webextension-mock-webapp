@@ -1,0 +1,4 @@
+/bin
+/node_modules
+/lib/public/hwcrypto-*.js
+/lib/public/token-signing.js

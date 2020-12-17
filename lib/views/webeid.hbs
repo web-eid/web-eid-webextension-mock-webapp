@@ -1,0 +1,118 @@
+<script type="module" src="/webeid/authenticate.js"></script>
+<script type="module" src="/webeid/sign.js"></script>
+<script type="module" src="/webeid/status.js"></script>
+<script type="module" src="/webeid/extension-mock.js"></script>
+
+<main>
+  <div>
+    <h1>Web-eID service mock</h1>
+    <p>
+    <table id="status">
+      <tbody>
+        <tr>
+          <th>Library version</th>
+          <td id="status-library"></td>
+        </tr>
+        <tr>
+          <th>Extension version</th>
+          <td id="status-extension"></td>
+        </tr>
+        <tr>
+          <th>Native app version</th>
+          <td id="status-native"></td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <td id="status-message"></td>
+        </tr>
+      </tbody>
+    </table>
+    </p>
+
+    <hr>
+
+    <h2>Authenticate</h2>
+    <table class="options">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>getAuthChallengeUrl</td>
+          <td><input id="getAuthChallengeUrl" type="text" required></td>
+        </tr>
+        <tr>
+          <td>postAuthTokenUrl</td>
+          <td><input id="postAuthTokenUrl" type="text" required></td>
+        </tr>
+        <tr>
+          <td>headers</td>
+          <td><input id="authHeaders" type="text"></td>
+        </tr>
+        <tr>
+          <td>userInteractionTimeout</td>
+          <td><input id="authUserInteractionTimeout" type="text"></td>
+        </tr>
+        <tr>
+          <td>serverRequestTimeout</td>
+          <td><input id="authServerRequestTimeout" type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <input id="authenticateButton" type="button" value="Authenticate">
+
+    <textarea id="authResult" name="auth-result" placeholder="Authentication result will be here..."
+      readonly></textarea>
+
+    <hr>
+
+    <h2>Sign</h2>
+    <table class="options">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>postPrepareSigningUrl</td>
+          <td><input id="postPrepareSigningUrl" type="text" required></td>
+        </tr>
+        <tr>
+          <td>postFinalizeSigningUrl</td>
+          <td><input id="postFinalizeSigningUrl" type="text" required></td>
+        </tr>
+        <tr>
+          <td>headers</td>
+          <td><input id="signHeaders" type="text"></td>
+        </tr>
+        <tr>
+          <td>userInteractionTimeout</td>
+          <td><input id="signUserInteractionTimeout" type="text"></td>
+        </tr>
+        <tr>
+          <td>serverRequestTimeout</td>
+          <td><input id="signServerRequestTimeout" type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <input id="signButton" type="button" value="Sign">
+
+    <textarea id="signResult" name="sign-result" placeholder="Signing result will be here..." readonly></textarea>
+  </div>
+
+  <div>
+    <h2>Mock Web-eID extension responses</h2>
+    <div>
+      <input type="checkbox" id="mock-ack" class="toggle-option">
+      <label for="mock-ack">Mock extension acknowledge message</label>
+    </div>
+    <div id="extension-mock-buttons"></div>
+  </div>
+</main>

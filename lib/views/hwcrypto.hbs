@@ -1,0 +1,196 @@
+<script src="/hwcrypto-0.0.13.js"></script>
+<script type="module" src="/hwcrypto/status.js"></script>
+<script type="module" src="/hwcrypto/certificate.js"></script>
+<script type="module" src="/hwcrypto/sign.js"></script>
+
+<main>
+  <div>
+    <h1>hwcrypto.js service mock</h1>
+
+    <table id="status">
+      <tbody>
+        <tr>
+          <th>TokenSigning</th>
+          <td>
+            {{#if tokenSigning}}
+              Page script defined by website
+            {{else}}
+              Not defined by website, should be injected by chrome-token-signing extension
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <th>Library version</th>
+          <td id="status-library"></td>
+        </tr>
+        <tr>
+          <th>Extension version</th>
+          <td id="status-extension"></td>
+        </tr>
+        <tr>
+          <th>Native app version</th>
+          <td id="status-native"></td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <td id="status-message"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Use</h2>
+    <table class="options">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Backend</td>
+          <td>
+            <select id="useBackend" disabled>
+              <option value="auto" selected>auto</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Note</td>
+          <td>
+            Options for <strong>hwcrypto.use(...)</strong> are "auto", "chrome" and "npapi"<br>
+            However there are issues with this function:
+            <ul>
+              <li>Backend option to use can only be set once.</li>
+              <li>
+                Chrome loads extension content scripts with a delay.
+                When hwcrypto attempts to detect the backend before the extension is ready,
+                it gets stuck with NoBackend option.</li>
+              <li>
+                The documentation says, <q>This MUST be called before using any of the public methods.</q>,
+                but all public methods call <strong>_autodetect()</strong> automatically.
+              </li>
+              <li>NPAPI is a legacy option</li>
+            </ul>
+            Because of these points, this page does not call <strong>hwcrypto.use(...)</strong>,
+            instead the backend will be auto-detected when other public functions are called.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Get certificate</h2>
+    <table class="options">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Filter</td>
+          <td>
+            <select name="certificateFilter" id="certificateFilter">
+              <option value="" selected>(not specified)</option>
+              <option value="SIGN">SIGN</option>
+              <option value="AUTH">AUTH</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Language</td>
+          <td>
+            <select name="certificateLanguage" id="certificateLanguage">
+              <option value="et">et</option>
+              <option value="en" selected>en</option>
+              <option value="ru">ru</option>
+              <option value="lt">lt</option>
+              <option value="lv">lv</option>
+              <option value="tr">tr</option>
+              <option value="est">est</option>
+              <option value="eng">eng</option>
+              <option value="rus">rus</option>
+              <option value="lit">lit</option>
+              <option value="lat">lat</option>
+              <option value="tur">tur</option>
+              <option value="sw">sw (Swahili, not supported)</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <input id="getCertificateButton" type="button" value="Get certificate">
+
+    <textarea id="certificateResult" name="certificate-result" placeholder="Certificate results will be here..." readonly></textarea>
+
+    <hr>
+
+    <h2>Sign</h2>
+    <table class="options">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hash type</td>
+          <td>
+            <select id="signHashType">
+              <option value="SHA-1">SHA-1</option>
+              <option value="SHA-224">SHA-224</option>
+              <option value="SHA-256">SHA-256</option>
+              <option value="SHA-384" selected>SHA-384</option>
+              <option value="SHA-512">SHA-512</option>
+              <option value="SHA-192">SHA-192</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Hash hex</td>
+          <td>
+            <input type="text" value="" id="signHashHex">
+          </td>
+        </tr>
+        <tr>
+          <td>Language</td>
+          <td>
+            <select id="signLanguage">
+              <option value="et">et</option>
+              <option value="en" selected>en</option>
+              <option value="ru">ru</option>
+              <option value="lt">lt</option>
+              <option value="lv">lv</option>
+              <option value="tr">tr</option>
+              <option value="est">est</option>
+              <option value="eng">eng</option>
+              <option value="rus">rus</option>
+              <option value="lit">lit</option>
+              <option value="lat">lat</option>
+              <option value="tur">tur</option>
+              <option value="sw">sw (Swahili, not supported)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Info</td>
+          <td>
+            <input type="text" id="signInfo">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <input id="signButton" type="button" value="Sign">
+
+    <textarea id="signResult" placeholder="Signing result will be here..." readonly></textarea>
+  </div>
+
+</main>
