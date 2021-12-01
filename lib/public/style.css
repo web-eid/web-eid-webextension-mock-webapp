@@ -38,10 +38,21 @@ th {
   width: 160px;
 }
 
+th[colspan="2"] {
+  text-align: left;
+  padding: 4px;
+}
+
 th,
 td {
   padding: 4px;
   background: #EEE;
+}
+
+td:first-child {
+    width: 1px;
+    padding-left: 16px;
+    white-space: nowrap;
 }
 
 table.success th,
