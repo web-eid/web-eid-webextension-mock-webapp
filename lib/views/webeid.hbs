@@ -32,38 +32,41 @@
     <hr>
 
     <h2>Authenticate</h2>
-    <table class="options">
-      <thead>
-        <tr>
-          <th>Option</th>
-          <th>Value</th>
-        </tr>
-      </thead>
+    <table class="authenticate options">
       <tbody>
         <tr>
-          <td>getAuthChallengeUrl</td>
-          <td><input id="getAuthChallengeUrl" type="text" required></td>
+          <th colspan="2">Authentication challenge</th>
         </tr>
         <tr>
-          <td>postAuthTokenUrl</td>
-          <td><input id="postAuthTokenUrl" type="text" required></td>
+          <td>GET URL</td>
+          <td><input name="getAuthChallengeUrl" type="text" required></td>
         </tr>
         <tr>
           <td>headers</td>
-          <td><input id="authHeaders" type="text"></td>
+          <td><input name="getAuthChallengeHeaders" type="text"></td>
+        </tr>
+        <tr>
+          <th colspan="2">Authentication token</th>
+        </tr>
+        <tr>
+          <td>POST URL</td>
+          <td><input name="postAuthTokenUrl" type="text" required></td>
+        </tr>
+        <tr>
+          <td>headers</td>
+          <td><input name="postAuthTokenHeaders" type="text"></td>
+        </tr>
+        <tr>
+          <th colspan="2">Web-eID library options</th>
         </tr>
         <tr>
           <td>userInteractionTimeout</td>
-          <td><input id="authUserInteractionTimeout" type="text"></td>
-        </tr>
-        <tr>
-          <td>serverRequestTimeout</td>
-          <td><input id="authServerRequestTimeout" type="text"></td>
+          <td><input name="authUserInteractionTimeout" type="text"></td>
         </tr>
         <tr>
           <td>Language</td>
           <td>
-            <select name="authLanguage" id="authLanguage">
+            <select name="authLanguage">
               <option value="" selected>(not specified)</option>
               <option value="et">et</option>
               <option value="en">en</option>
@@ -78,46 +81,49 @@
       </tbody>
     </table>
 
-    <input id="authenticateButton" type="button" value="Authenticate">
+    <input name="authenticateButton" type="button" value="Authenticate">
 
-    <textarea id="authResult" name="auth-result" placeholder="Authentication result will be here..."
+    <textarea name="authResult" placeholder="Authentication result will be here..."
       readonly></textarea>
 
     <hr>
 
     <h2>Sign</h2>
-    <table class="options">
-      <thead>
-        <tr>
-          <th>Option</th>
-          <th>Value</th>
-        </tr>
-      </thead>
+    <table class="sign options">
       <tbody>
         <tr>
-          <td>postPrepareSigningUrl</td>
-          <td><input id="postPrepareSigningUrl" type="text" required></td>
+          <th colspan="2">Prepare signing</th>
         </tr>
         <tr>
-          <td>postFinalizeSigningUrl</td>
-          <td><input id="postFinalizeSigningUrl" type="text" required></td>
+          <td>POST URL</td>
+          <td><input name="postPrepareSigningUrl" type="text" required></td>
         </tr>
         <tr>
-          <td>headers</td>
-          <td><input id="signHeaders" type="text"></td>
+          <td>Headers</td>
+          <td><input name="postPrepareSigningHeaders" type="text" required></td>
+        </tr>
+        <tr>
+          <th colspan="2">Finalize signing</th>
+        </tr>
+        <tr>
+          <td>POST URL</td>
+          <td><input name="postFinalizeSigningUrl" type="text" required></td>
+        </tr>
+        <tr>
+          <td>Headers</td>
+          <td><input name="postFinalizeSigningHeaders" type="text" required></td>
+        </tr>
+        <tr>
+          <th colspan="2">Web-eID library options</th>
         </tr>
         <tr>
           <td>userInteractionTimeout</td>
-          <td><input id="signUserInteractionTimeout" type="text"></td>
-        </tr>
-        <tr>
-          <td>serverRequestTimeout</td>
-          <td><input id="signServerRequestTimeout" type="text"></td>
+          <td><input name="signUserInteractionTimeout" type="text"></td>
         </tr>
         <tr>
           <td>Language</td>
           <td>
-            <select name="signLanguage" id="signLanguage">
+            <select name="signLanguage">
               <option value="" selected>(not specified)</option>
               <option value="et">et</option>
               <option value="en">en</option>
@@ -132,9 +138,9 @@
       </tbody>
     </table>
 
-    <input id="signButton" type="button" value="Sign">
+    <input name="signButton" type="button" value="Sign">
 
-    <textarea id="signResult" name="sign-result" placeholder="Signing result will be here..." readonly></textarea>
+    <textarea name="signResult" placeholder="Signing result will be here..." readonly></textarea>
   </div>
 
   <div>
