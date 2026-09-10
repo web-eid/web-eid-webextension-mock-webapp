@@ -20,7 +20,7 @@
     "hbs": "^4.2.0",
     "helmet": "^4.6.0",
     "http-errors": "~1.6.3",
-    "morgan": "~1.11.0"
+    "morgan": "~1.12.0"
   },
   "devDependencies": {
     "eslint": "^8.2.0",
